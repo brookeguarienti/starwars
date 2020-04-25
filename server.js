@@ -6,7 +6,7 @@ var path = require("path");
 // Sets up the Express App
 // =============================================================
 var app = express();
-var PORT = process.env.PORT || 3000;
+var PORT = process.env.PORT || 7000;
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
@@ -68,6 +68,11 @@ app.get("/api/characters/:character", function(req, res) {
   }
 
   return res.json(false);
+});
+
+// Displays all characters in table
+app.get("/allcharacters", function(req, res) {
+  res.sendFile(path.join(__dirname, "characters.html"));
 });
 
 // Create New Characters - takes in JSON input
